@@ -16,7 +16,8 @@ pipeline {
                 TAG=$(date "+%H%M%S%d%m%Y")
                 docker build -t $IMAGENAME:$TAG .
                 docker push $IMAGENAME:$TAG
-                echo "$IMAGENAME:$TAG ${WORKSPACE}/Dockerfile " > anchore_images
+                # echo "$IMAGENAME:$TAG ${WORKSPACE}/Dockerfile " > anchore_images
+                echo "$IMAGENAME:$TAG" > anchore_images
             '''
           }
       }
