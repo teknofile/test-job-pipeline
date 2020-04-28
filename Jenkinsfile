@@ -5,7 +5,7 @@ pipeline {
 
   environment {
     IMAGENAME="teknofile/testimage"
-    TAG=$(date "+%H%M%S%d%m%Y")
+    TAG=$(date '+%H%M%S%d%m%Y')
   }
    stages {
       stage('Create Dockerfile') {
