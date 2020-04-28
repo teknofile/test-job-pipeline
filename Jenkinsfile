@@ -6,6 +6,7 @@ pipeline {
   environment {
     IMAGENAME="teknofile/testimage"
     TAG="testing"
+    LOCAL_DOCKER_PROXY="docker.copperdale.teknofile.net/"
   }
    stages {
       stage('Create Dockerfile') {
@@ -25,7 +26,7 @@ pipeline {
       }
       stage('Scan it') {
         steps {
-            sh 'curl -s https://nexus.copperdale.teknofile.net/repository/teknofile-utils/teknofile/ci/utils/inline_scan-v0.6.0 | bash -s -- -t 1800 -p ${IMAGENAME}:${TAG} -r'
+            sh 'curl -s https://nexus.copperdale.teknofile.net/repository/teknofile-utils/teknofile/ci/utils/tkf-inline-scan-v0.6.0-1.sh | bash -s -- -t 1800 -p ${LOCAL_DOCKER_PROXY}${IMAGENAME}:${TAG} -r'
         }
       }
    }
