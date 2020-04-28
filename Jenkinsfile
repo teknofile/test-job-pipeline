@@ -25,7 +25,7 @@ pipeline {
       }
       stage('Scan it') {
         steps {
-            sh 'curl -s https://nexus.copperdale.teknofile.net/repository/teknofile-utils/teknofile/ci/utils/inline_scan-v0.6.0 | bash -s -- -d Dockerfile -p docker.copperdale.teknofile.net/${IMAGENAME}:${TAG} -r'
+            sh 'curl -s https://nexus.copperdale.teknofile.net/repository/teknofile-utils/teknofile/ci/utils/inline_scan-v0.6.0 | bash -s -- -t 1800 -p docker.copperdale.teknofile.net/${IMAGENAME}:${TAG} -r'
         }
       }
    }
